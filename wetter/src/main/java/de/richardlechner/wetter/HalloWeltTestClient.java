@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
 public class HalloWeltTestClient {
@@ -36,16 +37,28 @@ public class HalloWeltTestClient {
 
 
             client.register(feature);
+       
+            WebTarget webtarget = client.target("https://www.wunderground.com");
+            webtarget.path("/weatherstation/WXDailyHistory.asp");
+            webtarget.queryParam("ID", "IOBHOHEN20");
+            webtarget.queryParam("day", "14");
+            webtarget.queryParam("month", "8");
+            webtarget.queryParam("year", "2018");
+            webtarget.queryParam("graphspan", "day");
+            webtarget.queryParam("format", "1");
+            //client.target("sdfsdf").queryParam(name, values)
+            
+            
                     //PUT request, if need uncomment it 
                     //final Response response = client
                     //.target("https://localhost:7002/VaquarKhanWeb/employee/api/v1/informations")
                     //.request().put(Entity.entity(input, MediaType.APPLICATION_JSON), Response.class);
             //GET Request
-            final Response response = client
-                    .target("https://localhost:7002/VaquarKhanWeb/employee/api/v1/informations")
-                    .request().get();
+            //final Response response = client
+             //       .target("https://localhost:7002/VaquarKhanWeb/employee/api/v1/informations")
+             //       .request().get();
 
-
+            final Response response = webtarget.request().get();
 
 
             if (response.getStatus() != HttpStatus.OK.value()) { throw new RuntimeException("Failed : HTTP error code : "
