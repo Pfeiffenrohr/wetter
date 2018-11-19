@@ -17,8 +17,8 @@ import javax.ws.rs.core.Response;
 
 public class HalloWeltTestClient {
     public static void main(String[] args) {
-        String username = "username";
-            String password = "p@ssword";
+        String username = "richard@richardlechner.de";
+            String password = "dra.chir";
         String input = "{\"userId\":\"12345\",\"name \":\"Viquar\",\"surname\":\"Khan\",\"Email\":\"Vaquar.khan@gmail.com\"}";
         try {
         //SSLContext sc = SSLContext.getInstance("SSL");//Java 6
@@ -57,7 +57,7 @@ public class HalloWeltTestClient {
             //final Response response = client
              //       .target("https://localhost:7002/VaquarKhanWeb/employee/api/v1/informations")
              //       .request().get();
-
+System.out.println(webtarget.toString());
             final Response response = webtarget.request().get();
 
 
